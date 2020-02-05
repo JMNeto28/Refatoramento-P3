@@ -3,14 +3,13 @@ package pesca;
 import java.text.ParseException;
 import java.util.Scanner;
 
+import Data.ObjSingle;
 import Strategy.CadastroContexto;
 
-public class Pesca{
+public class Pesca {
 
 	public static void main(String[] args) throws ParseException {
-		Pescadores p1 = new Pescadores();
-		Pacote pacote = new Pacote();
-		NotaFiscal nota = new NotaFiscal();
+		ObjSingle obj = ObjSingle.getInstance();
 		LocaisPesca local = new LocaisPesca();
 		CadastroContexto cadastro = new CadastroContexto();
 		Aluguel aluga = new Aluguel();
@@ -34,14 +33,14 @@ public class Pesca{
 			{
 				System.out.println("-------------------------------------------------------------");
 				System.out.println("Cadastro:");
-				p1.regis1();
+				obj.getp1().regis1();
 				System.out.println("-------------------------------------------------------------");
 			}
 			else if(escolherFuncio == 2) 
 			{
 				System.out.println("-------------------------------------------------------------");
 				System.out.println("Você está na área de pacotes de viagem");
-				pacote.Evip(p1, nota);
+				obj.getpacote().Evip(obj.getp1(), obj.getnota());
 				System.out.println("-------------------------------------------------------------");
 			}
 			else if(escolherFuncio == 3)
@@ -72,9 +71,9 @@ public class Pesca{
 			{
 				System.out.println("-------------------------------------------------------------");
 				System.out.println("Nota fiscal para o cliente:");
-				if (e == 1) somadou = (nota.Relatorio()+ carro.somar(aux));
-				else somadou = (nota.Relatorio() + carro1.somar(aux));
-				nota.Dados(p1, LocalEscolhido);
+				if (e == 1) somadou = (obj.getnota().Relatorio()+ carro.somar(aux));
+				else somadou = (obj.getnota().Relatorio() + carro1.somar(aux));
+				obj.getnota().Dados(obj.getp1(), LocalEscolhido);
 				System.out.printf("Valor bruto: R$%.2f\n",  somadou);
 				System.out.printf("Valor com desconto: R$%.2f\n", valor);
 				System.out.println("-------------------------------------------------------------");
@@ -85,11 +84,11 @@ public class Pesca{
 				System.out.println("-------------------------------------------------------------");
 				System.out.println("Inserir cupom de desconto\n");
 				cupom = sc.nextLine();
-				if (e == 1) somadou = (nota.Relatorio()+ carro.somar(aux));
-				else somadou = (nota.Relatorio() + carro1.somar(aux));
+				if (e == 1) somadou = (obj.getnota().Relatorio()+ carro.somar(aux));
+				else somadou = (obj.getnota().Relatorio() + carro1.somar(aux));
 				if(cupom.equals("DESCONTO"))
 				{
-					valor = pacote.desconto(p1, somadou);
+					valor = obj.getpacote().desconto(obj.getp1(), somadou);
 				}
 				else System.out.println("O cupom não é válido\n");
 				System.out.println("-------------------------------------------------------------");
@@ -99,7 +98,7 @@ public class Pesca{
 			{
 				System.out.println("-------------------------------------------------------------");
 				System.out.println("Você pode editar o cadastro.\n");
-				p1.regis1();
+				obj.getp1().regis1();
 				System.out.println("-------------------------------------------------------------");
 			}
 
