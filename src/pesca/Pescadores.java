@@ -7,7 +7,7 @@ public class Pescadores {
 	
 		public String nome;
 		public String cpf;
-		public String endereÁo;
+		public String endere√ßo;
 		public String numero;
 		public String numFormatado;
 		public int mes;
@@ -44,16 +44,15 @@ public class Pescadores {
 		nome = sc.nextLine();
 		System.out.println("Digite o CPF: (No formato: 12345678900)");
 		cpf = sc.nextLine();
-		cpf = cpf.replaceAll("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})","$1\\.$2\\.$3-$4");
-		System.out.println("Digite o endereÁo:");
-		endereÁo = sc.nextLine();
+		System.out.println("Digite o endere√ßo:");
+		endere√ßo = sc.nextLine();
 		System.out.println("Digite o numero: (No formato: 82999990000)");
 		numero = sc.nextLine();
 		numFormatado = TraExce.lerTele(numero);
 		System.out.println("Digite o tipo de pescador:\n1- Esportivo\n2- Amador\n3- Profissional\n");
 		tip = TraExce.lerInt();
 		setTipoPescador(tip);
-		System.out.println("Digite 1 se o cliente for VIP ou 2 se n„o for VIP:");
+		System.out.println("Digite 1 se o cliente for VIP ou 2 se n√£o for VIP:");
 		tip1 = TraExce.lerInt();
 		setVip(tip1);
 	}
